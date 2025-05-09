@@ -3,26 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/WelcomeFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.lembretethiago.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/WelcomeFragment"
+        android:name="com.example.lembretethiago.WelcomeFragment"
+        android:label="@string/welcome_fragment_label"
+        tools:layout="@layout/fragment_welcome">
+
+        <argument
+            android:name="NOME_USUARIO"
+            app:argType="string"/>
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_WelcomeFragment_to_LembreteFragment"
+            app:destination="@id/LembreteFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.lembretethiago.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/LembreteFragment"
+        android:name="com.example.lembretethiago.LembreteFragment"
+        android:label="@string/lembrete_fragment_label"
+        tools:layout="@layout/fragment_lembrete">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_LembreteFragment_to_WelcomeFragment"
+            app:destination="@id/WelcomeFragment" />
     </fragment>
 </navigation>
