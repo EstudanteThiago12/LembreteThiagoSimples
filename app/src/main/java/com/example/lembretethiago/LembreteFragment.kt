@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.example.lembretethiago.databinding.FragmentLembreteBinding
 
 /**
@@ -54,6 +55,11 @@ class LembreteFragment : Fragment() {
             Toast.makeText(context, "Texto salvo com sucesso!", Toast.LENGTH_SHORT).show()
             editar.putString("TEXTO_SALVO",texto).apply()
         }
+
+        binding.buttonVoltar.setOnClickListener(){
+            findNavController().navigate(R.id.action_LembreteFragment_to_WelcomeFragment)
+        }
+
 
 
     }
