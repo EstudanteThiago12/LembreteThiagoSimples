@@ -4,6 +4,7 @@
     <!-- Strings used for fragments for navigation -->
     <string name="welcome_fragment_label">WelcomeFragment</string>
     <string name="lembrete_fragment_label">LembreteFragment</string>
+    <string name="cadastro_fragment_label">CadastroFragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 

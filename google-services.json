@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "565162681683",
+    "project_id": "aplicativo-de-lembrete",
+    "storage_bucket": "aplicativo-de-lembrete.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:565162681683:android:4dc15bf9f2a61b767a6da6",
+        "android_client_info": {
+          "package_name": "com.example.lembretethiago"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzp2voPfTAi1CUuW7kX4aN_hcryE5uhUw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

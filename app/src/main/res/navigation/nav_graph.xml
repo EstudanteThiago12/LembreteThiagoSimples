@@ -18,6 +18,10 @@
         <action
             android:id="@+id/action_WelcomeFragment_to_LembreteFragment"
             app:destination="@id/LembreteFragment" />
+
+        <action
+            android:id="@+id/action_WelcomeFragment_to_CadastroFragment"
+            app:destination="@+id/CadastroFragment"/>
     </fragment>
     <fragment
         android:id="@+id/LembreteFragment"
@@ -28,5 +32,18 @@
         <action
             android:id="@+id/action_LembreteFragment_to_WelcomeFragment"
             app:destination="@id/WelcomeFragment" />
+        </fragment
+            >
+
+    <fragment
+        android:id="@+id/CadastroFragment"
+        android:name="com.example.lembretethiago.CadastroFragment"
+        android:label="@string/cadastro_fragment_label"
+        tools:layout="@layout/fragment_cadastro"
+        >
+        <action
+            android:id="@+id/action_CadastroFragment_to_WelcomeFragment"
+            app:destination="@+id/WelcomeFragment"/>
+
     </fragment>
 </navigation>
