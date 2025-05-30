@@ -35,9 +35,7 @@ class LembreteFragment : Fragment() {
         val stringArg = arguments?.getString("NOME_USUARIO")
         binding.NomeTxv.setText("Olá, " + stringArg)
 
-        lateinit var sharedPreferences: SharedPreferences
-
-        sharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
+        var sharedPreferences: SharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
 
         val editar = sharedPreferences.edit()
 
@@ -57,6 +55,7 @@ class LembreteFragment : Fragment() {
         }
 
         binding.buttonVoltar.setOnClickListener(){
+            editar.remove("token").apply()
             findNavController().navigate(R.id.action_LembreteFragment_to_WelcomeFragment)
         }
 

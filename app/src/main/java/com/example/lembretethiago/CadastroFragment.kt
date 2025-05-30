@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.lembretethiago.databinding.FragmentCadastroBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -32,50 +33,35 @@ class CadastroFragment : Fragment() {
 
         _binding = FragmentCadastroBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val CadNome = binding.tvNomeCad.text.toString()
-        val CadEmail = binding.tvEmailCad.text.toString()
-        val CadSenha = binding.tvSenhaCad.text.toString()
-
-        binding.btnVoltarCad.setOnClickListener(){
+        binding.btnVoltarCad.setOnClickListener() {
             findNavController().navigate(R.id.action_CadastroFragment_to_WelcomeFragment)
         }
-        binding.btnCadastrar.setOnClickListener{
+        binding.btnCadastrarCad.setOnClickListener {
 
-        }
+            val CadNome = binding.tvNomeCad.text.toString()
+            val CadEmail = binding.tvEmailCad.text.toString()
+            val CadSenha = binding.tvSenhaCad.text.toString()
 
-        auth.createUserWithEmailAndPassword(CadEmail, CadSenha)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "createUserWithEmail:success")
-                    val user = auth.currentUser
-                    updateUI(user)
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(
-                        baseContext,
-                        "Authentication failed.",
-                        Toast.LENGTH_SHORT,
-                    ).show()
-                    updateUI(null)
+            auth.createUserWithEmailAndPassword(CadEmail, CadSenha)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d("Debug", "createUserWithEmail:success")
+                        findNavController().navigate(R.id.action_CadastroFragment_to_WelcomeFragment)
+                    } else {
+                        val exception = task.exception
+                        if (exception is FirebaseAuthException) {
+                            val errorMessage = exception.message ?: "Erro no cadastro"
+                            // Mostra a mensagem na tela
+                        }
+                    }
                 }
-            }
-
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            reload()
         }
-
-
     }
 
     override fun onDestroyView() {
