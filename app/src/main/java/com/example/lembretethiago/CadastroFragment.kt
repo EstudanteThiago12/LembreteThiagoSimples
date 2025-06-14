@@ -50,19 +50,18 @@ class CadastroFragment : Fragment() {
             auth.createUserWithEmailAndPassword(CadEmail, CadSenha)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
                         Log.d("Debug", "createUserWithEmail:success")
                         findNavController().navigate(R.id.action_CadastroFragment_to_WelcomeFragment)
                     } else {
                         val exception = task.exception
                         if (exception is FirebaseAuthException) {
                             val errorMessage = exception.message ?: "Erro no cadastro"
-                            // Mostra a mensagem na tela
                         }
                     }
                 }
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
